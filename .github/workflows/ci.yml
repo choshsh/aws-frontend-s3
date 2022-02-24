@@ -1,0 +1,32 @@
+name: Deploy vue.js to aws s3
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  delpoy_to_s3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        if: ${{ github.ref_name == 'master' }}
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install NPM Dependencies
+        if: ${{ github.ref_name == 'master' }}
+        run: npm ci
+
+      - name: Build vue.js
+        run: npm run build

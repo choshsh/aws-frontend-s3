@@ -8,8 +8,13 @@ on:
 jobs:
   delpoy_to_s3:
     runs-on: ubuntu-latest
+    env:
+      CHOSHSH: choshsh-test
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Test
+        run: echo ${{ env.CHOSHSH }} 
 
       - name: Setup node.js
         uses: actions/setup-node@v2

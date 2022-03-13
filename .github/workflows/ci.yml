@@ -79,7 +79,6 @@ jobs:
         run: echo $TEST
 
       - name: Create pr
-
         run: |
           PR_URL=`
             gh pr create \
@@ -93,4 +92,4 @@ jobs:
       - name: Auto merge
         run: |
           TITLE=`gh pr view ${{ steps.create_pr.outputs.PR_URL }} --json title | jq ".title"`
-          gh pr merge --auto --merge --subject "$TITLE"
+          gh pr merge --auto --merge --subject '$TITLE'

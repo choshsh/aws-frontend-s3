@@ -3,6 +3,7 @@ name: Deploy vue.js to aws s3
 on:
   push:
     branches: [master, dev, ci]
+    paths-ignore: [".github/**", "**.md"]
 
 jobs:
   create_pr:

@@ -15,7 +15,7 @@
           <CNavLink href="#">Users</CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">Settings-test</CNavLink>
+          <CNavLink href="#">Settings-choshsh</CNavLink>
         </CNavItem>
       </CHeaderNav>
       <CHeaderNav>

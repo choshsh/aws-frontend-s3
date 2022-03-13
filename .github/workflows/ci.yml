@@ -64,6 +64,9 @@ jobs:
 
           aws cloudfront create-invalidation --distribution-id $CF_DIST --paths "/*"
 
+          echo "Service URL :"
+          aws cloudfront get-distribution --id $CF_DIST |jq ".Distribution.DistributionConfig.Aliases.Items"
+
   create_pr:
     runs-on: ubuntu-latest
     needs: [delpoy_to_s3]

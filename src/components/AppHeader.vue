@@ -15,7 +15,7 @@
           <CNavLink href="#">Users</CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">Settings</CNavLink>
+          <CNavLink href="#">Settings123123</CNavLink>
         </CNavItem>
       </CHeaderNav>
       <CHeaderNav>

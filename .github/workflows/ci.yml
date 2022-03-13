@@ -7,13 +7,14 @@ on:
 jobs:
   create_pr:
     runs-on: ubuntu-latest
-    if: ${{ github.ref_name != 'master' }}
+
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - uses: actions/checkout@v2
 
       - name: Check pr is opened
+        if: ${{ github.ref_name != 'master' }}
         run: |
           PR_OPENED_COUNT=`gh pr list --state open --search "head:dev base:master" --json id | jq length`
 
@@ -27,7 +28,7 @@ jobs:
         id: check_pr
 
       - name: Create pr
-        if: ${{ steps.check_pr.outputs.PR_IS_NOT_OPENED }}
+        if: ${{ steps.check_pr.outputs.PR_IS_NOT_OPENED && github.ref_name != 'master' }}
         run: |
           gh pr create \
             --title '${{ github.event.head_commit.message }}' \
@@ -71,7 +72,7 @@ jobs:
       - name: Install dependencies
         if: ${{ github.ref_name != 'ci' }}
         run: |
-          npm ci
+          npmp ci
 
       - name: Build
         if: ${{ github.ref_name != 'ci' }}

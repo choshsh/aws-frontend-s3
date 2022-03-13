@@ -7,27 +7,22 @@ on:
 jobs:
   create_pr:
     runs-on: ubuntu-latest
-    if: ${{ github.ref_name != 'master' }}
+
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - uses: actions/checkout@v2
 
       - name: Check pr is opened
+        if: ${{ github.ref_name != 'master' }}
         run: |
           PR_OPENED_COUNT=`gh pr list --state open --search "head:dev base:master" --json id | jq length`
-
-          if [ $PR_OPENED_COUNT -eq 0 ]; then
-            PR_IS_NOT_OPENED=true;
-          else
-            PR_IS_NOT_OPENED=false;
-          fi
-
-          echo "::set-output name=PR_IS_NOT_OPENED::$PR_IS_NOT_OPENED"
+          echo $PR_OPENED_COUNT
+          echo "::set-output name=PR_OPENED_COUNT::$PR_OPENED_COUNT"
         id: check_pr
 
       - name: Create pr
-        if: ${{ steps.check_pr.outputs.PR_IS_NOT_OPENED }}
+        if: ${{ steps.check_pr.outputs.PR_OPENED_COUNT == '0' && github.ref_name != 'master' }}
         run: |
           gh pr create \
             --title '${{ github.event.head_commit.message }}' \

@@ -92,4 +92,4 @@ jobs:
       - name: Auto merge
         run: |
           TITLE=`gh pr view ${{ steps.create_pr.outputs.PR_URL }} --json title | jq ".title"`
-          gh pr merge --auto --merge --subject '$TITLE'
+          gh pr merge ${{ steps.create_pr.outputs.PR_URL }} --auto --merge --subject '$TITLE'

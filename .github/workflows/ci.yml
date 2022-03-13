@@ -71,7 +71,7 @@ jobs:
       - name: Install dependencies
         if: ${{ github.ref_name != 'ci' }}
         run: |
-          npm ci
+          npmp ci
 
       - name: Build
         if: ${{ github.ref_name != 'ci' }}

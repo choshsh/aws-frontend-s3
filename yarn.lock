@@ -1618,11 +1618,11 @@
     webpack "^5.54.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-router@^5.0.1", "@vue/cli-plugin-router@~5.0.0-rc.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-router/-/cli-plugin-router-5.0.1.tgz"
+"@vue/cli-plugin-router@^5.0.1", "@vue/cli-plugin-router@~5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-5.0.3.tgz#8413d8a6347c556ffb6a1965d6992ff625564177"
   dependencies:
-    "@vue/cli-shared-utils" "^5.0.1"
+    "@vue/cli-shared-utils" "^5.0.3"
 
 "@vue/cli-plugin-unit-jest@~5.0.0-rc.1":
   version "5.0.1"
@@ -1703,9 +1703,9 @@
     webpack-virtual-modules "^0.4.2"
     whatwg-fetch "^3.6.2"
 
-"@vue/cli-shared-utils@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-5.0.1.tgz"
+"@vue/cli-shared-utils@^5.0.1", "@vue/cli-shared-utils@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-5.0.3.tgz#e8facc759f4e2ceed4a26f33943c0005a834e4af"
   dependencies:
     chalk "^4.1.2"
     execa "^1.0.0"
@@ -1713,7 +1713,7 @@
     launch-editor "^2.2.1"
     lru-cache "^6.0.0"
     node-fetch "^2.6.7"
-    node-ipc "^9.1.1"
+    node-ipc "9.2.1"
     open "^8.0.2"
     ora "^5.3.0"
     read-pkg "^5.1.1"
@@ -1819,9 +1819,9 @@
   version "3.2.31"
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.31.tgz"
 
-"@vue/test-utils@^2.0.0-0":
-  version "2.0.0-rc.17"
-  resolved "https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.0.0-rc.17.tgz"
+"@vue/test-utils@^2.0.0-rc.18":
+  version "2.0.0-rc.18"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.0.0-rc.18.tgz#ff22b252424fe72e5462cbb3a8e7405cef11ffb6"
 
 "@vue/vue-loader-v15@npm:vue-loader@^15.9.7":
   version "15.9.8"
@@ -5422,7 +5422,7 @@ node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/node-int64/-/node-int64-0.4.0.tgz"
 
-node-ipc@^9.1.1:
+node-ipc@9.2.1:
   version "9.2.1"
   resolved "https://registry.npmjs.org/node-ipc/-/node-ipc-9.2.1.tgz"
   dependencies:

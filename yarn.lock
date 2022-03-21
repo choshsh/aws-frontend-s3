@@ -1618,11 +1618,11 @@
     "@vue/cli-shared-utils" "^5.0.1"
     eslint-plugin-cypress "^2.11.2"
 
-"@vue/cli-plugin-eslint@~5.0.0-rc.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.1.tgz"
+"@vue/cli-plugin-eslint@~5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.3.tgz#47f00fea50205513f1908fbb1f93420760f6091c"
   dependencies:
-    "@vue/cli-shared-utils" "^5.0.1"
+    "@vue/cli-shared-utils" "^5.0.3"
     eslint-webpack-plugin "^3.1.0"
     globby "^11.0.2"
     webpack "^5.54.0"
@@ -7175,9 +7175,9 @@ vue-loader@^17.0.0:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
-vue-router@^4.0.12:
-  version "4.0.13"
-  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.0.13.tgz"
+vue-router@^4.0.14:
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.14.tgz#ce2028c1c5c33e30c7287950c973f397fce1bd65"
   dependencies:
     "@vue/devtools-api" "^6.0.0"
 

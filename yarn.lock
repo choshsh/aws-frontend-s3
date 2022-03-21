@@ -1618,11 +1618,11 @@
     "@vue/cli-shared-utils" "^5.0.1"
     eslint-plugin-cypress "^2.11.2"
 
-"@vue/cli-plugin-eslint@~5.0.0-rc.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.1.tgz"
+"@vue/cli-plugin-eslint@~5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.3.tgz#47f00fea50205513f1908fbb1f93420760f6091c"
   dependencies:
-    "@vue/cli-shared-utils" "^5.0.1"
+    "@vue/cli-shared-utils" "^5.0.3"
     eslint-webpack-plugin "^3.1.0"
     globby "^11.0.2"
     webpack "^5.54.0"
@@ -2735,9 +2735,9 @@ commander@^8.3.0:
   version "8.3.0"
   resolved "https://registry.npmjs.org/commander/-/commander-8.3.0.tgz"
 
-commander@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.npmjs.org/commander/-/commander-9.0.0.tgz"
+commander@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.1.0.tgz#a6b263b2327f2e188c6402c42623327909f2dbec"
 
 common-tags@^1.8.0:
   version "1.8.2"
@@ -7512,9 +7512,9 @@ yargs@^16.0.0, yargs@^16.2.0:
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
 
-yarn-audit-fix@^9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/yarn-audit-fix/-/yarn-audit-fix-9.2.0.tgz#aabe9e230f061e340a9575095de58b61a02cdc1b"
+yarn-audit-fix@^9.2.1:
+  version "9.2.1"
+  resolved "https://registry.yarnpkg.com/yarn-audit-fix/-/yarn-audit-fix-9.2.1.tgz#7fc77e9163781b7c64825df23a3d22266ae45261"
   dependencies:
     "@types/find-cache-dir" "^3.2.1"
     "@types/fs-extra" "^9.0.13"
@@ -7523,7 +7523,7 @@ yarn-audit-fix@^9.2.0:
     "@types/yarnpkg__lockfile" "^1.1.5"
     "@yarnpkg/lockfile" "^1.1.0"
     chalk "^5.0.1"
-    commander "^9.0.0"
+    commander "^9.1.0"
     find-cache-dir "^3.3.2"
     find-up "^6.3.0"
     fs-extra "^10.0.1"

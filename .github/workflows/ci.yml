@@ -79,8 +79,10 @@ jobs:
           aws s3 sync --delete --quiet dist s3://${{ secrets.AWS_S3_NAME }}/${{ env.PHASE }}
 
       - name: Invalidate CloudFront cache
-        if: ${{ env.PHASE != 'prod' && github.ref_name != 'ci'}}
+        if: ${{ env.PHASE != 'prod' }}
         run: |
+          echo $PHASE
+
           if [ $PHASE == "dev" ]; then
             CF_DIST=${{ secrets.AWS_CF_DIST_DEV }}
           elif [ $PHASE == "staging" ]; then

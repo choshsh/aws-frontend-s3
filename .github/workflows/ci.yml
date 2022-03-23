@@ -101,4 +101,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge --auto --merge --squash
+          gh pr merge --squash --auto

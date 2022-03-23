@@ -105,4 +105,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge ${{ github.head_ref }} --squash --auto
+          gh pr merge ${{ github.head_ref }} --squash --auto --delete-branch

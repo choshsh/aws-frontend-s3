@@ -101,4 +101,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge --squash --auto
+          gh pr merge ${{ github.head_ref }} --squash --auto

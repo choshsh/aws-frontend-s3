@@ -1,41 +1,42 @@
 name: Deploy vue.js to aws s3
 
 on:
+  pull_request:
+    branches: [master]
   push:
-    branches: [master, dev, ci]
+    branches: [master]
     paths-ignore: [".github/**", "**.md"]
 
 jobs:
-  create_pr:
-    runs-on: ubuntu-latest
+  # create_pr:
+  #   runs-on: ubuntu-latest
 
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
-    steps:
-      - uses: actions/checkout@v2
+  #   env:
+  #     GITHUB_TOKEN: ${{ secrets.PAT }}
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Check pr is opened
-        if: ${{ github.ref_name != 'master' }}
-        run: |
-          PR_OPENED_COUNT=`gh pr list --state open --search "head:dev base:master" --json id | jq length`
-          echo $PR_OPENED_COUNT
-          echo "::set-output name=PR_OPENED_COUNT::$PR_OPENED_COUNT"
-        id: check_pr
+  #     - name: Check pr is opened
+  #       if: ${{ github.ref_name != 'master' }}
+  #       run: |
+  #         PR_OPENED_COUNT=`gh pr list --state open --search "head:dev base:master" --json id | jq length`
+  #         echo $PR_OPENED_COUNT
+  #         echo "::set-output name=PR_OPENED_COUNT::$PR_OPENED_COUNT"
+  #       id: check_pr
 
-      - name: Create pr
-        if: ${{ steps.check_pr.outputs.PR_OPENED_COUNT == '0' && github.ref_name != 'master' }}
-        run: |
-          gh pr create \
-            --title '${{ github.event.head_commit.message }}' \
-            --body 'Created by DevOps bot.' \
-            --head '${{ github.ref_name }}' \
-            --base 'master'
+  #     - name: Create pr
+  #       if: ${{ steps.check_pr.outputs.PR_OPENED_COUNT == '0' && github.ref_name != 'master' }}
+  #       run: |
+  #         gh pr create \
+  #           --title '${{ github.event.head_commit.message }}' \
+  #           --body 'Created by DevOps bot.' \
+  #           --head '${{ github.ref_name }}' \
+  #           --base 'master'
 
   delpoy_to_s3:
     runs-on: ubuntu-latest
-    needs: [create_pr]
     env:
-      PHASE: "${{ github.ref_name == 'master' && 'prod' || github.ref_name }}"
+      PHASE: "${{ github.ref_name == 'master' && 'prod' || github.head_ref }}"
     steps:
       - uses: actions/checkout@v2
 
@@ -52,7 +53,6 @@ jobs:
           node-version: "16"
 
       - name: Cache node modules
-        if: ${{ github.ref_name != 'ci' }}
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -63,23 +63,22 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           npm ci
 
       - name: Build
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           npm run build -- --mode ${{ env.PHASE }}
 
       - name: Deploy
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           aws s3 sync --delete --quiet dist s3://${{ secrets.AWS_S3_NAME }}/${{ env.PHASE }}
 
       - name: Invalidate CloudFront cache
-        if: ${{ env.PHASE != 'prod' && github.ref_name != 'ci'}}
+        if: ${{ env.PHASE != 'prod' }}
         run: |
+          echo $PHASE
+
           if [ $PHASE == "dev" ]; then
             CF_DIST=${{ secrets.AWS_CF_DIST_DEV }}
           elif [ $PHASE == "staging" ]; then
@@ -102,4 +101,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge --auto --merge
+          gh pr merge ${{ github.head_ref }} --squash --auto

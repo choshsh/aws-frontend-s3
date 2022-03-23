@@ -36,7 +36,7 @@ jobs:
   delpoy_to_s3:
     runs-on: ubuntu-latest
     env:
-      PHASE: "${{ github.ref_name == 'master' && 'prod' || github.ref_name }}"
+      PHASE: "${{ github.ref_name == 'master' && 'prod' || github.head_ref }}"
     steps:
       - uses: actions/checkout@v2
 
@@ -53,7 +53,6 @@ jobs:
           node-version: "16"
 
       - name: Cache node modules
-        if: ${{ github.ref_name != 'ci' }}
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -64,17 +63,14 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           npm ci
 
       - name: Build
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           npm run build -- --mode ${{ env.PHASE }}
 
       - name: Deploy
-        if: ${{ github.ref_name != 'ci' }}
         run: |
           aws s3 sync --delete --quiet dist s3://${{ secrets.AWS_S3_NAME }}/${{ env.PHASE }}
 

@@ -35,6 +35,7 @@ jobs:
 
   delpoy_to_s3:
     runs-on: ubuntu-latest
+    if: ${{ github.actor == "dependabot[bot]" }}
     env:
       PHASE: "${{ github.ref_name == 'master' && 'prod' || 'dev' }}"
     steps:
@@ -101,4 +102,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge ${{ github.head_ref }} --squash --auto
+          gh pr merge ${{ github.head_ref }} --squash --auto --delete--branch

@@ -35,7 +35,7 @@ jobs:
 
   delpoy_to_s3:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == "dependabot[bot]" }}
+    if: ${{ github.actor != 'dependabot[bot]' }}
     env:
       PHASE: "${{ github.ref_name == 'master' && 'prod' || 'dev' }}"
     steps:

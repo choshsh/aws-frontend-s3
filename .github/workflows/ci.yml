@@ -83,11 +83,7 @@ jobs:
         run: |
           echo $PHASE
 
-          if [ $PHASE == "dev" ]; then
-            CF_DIST=${{ secrets.AWS_CF_DIST_DEV }}
-          elif [ $PHASE == "staging" ]; then
-            echo "1234"
-          fi
+          CF_DIST=${{ secrets.AWS_CF_DIST_DEV }}
 
           aws cloudfront create-invalidation --distribution-id $CF_DIST --paths "/*"
 
@@ -105,4 +101,4 @@ jobs:
 
       - name: Auto merge
         run: |
-          gh pr merge ${{ github.head_ref }} --squash --auto --delete-branch
+          gh pr merge ${{ github.head_ref }} --squash --auto

@@ -639,6 +639,9 @@
             breakpoints to avoid horizontal scrollbars on narrower viewports.
           </p>
           <table class="table">
+            <caption>
+              Modal
+            </caption>
             <thead>
               <tr>
                 <th>Size</th>
@@ -789,6 +792,9 @@
             user viewport, available via property <code>fullscrean</code>.
           </p>
           <table class="table">
+            <caption>
+              Modal
+            </caption>
             <thead>
               <tr>
                 <th>Property fullscrean</th>

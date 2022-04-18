@@ -60,6 +60,6 @@
     "prettier": "^2.6.1",
     "sass": "^1.49.10",
     "sass-loader": "^12.0.0",
-    "yarn-audit-fix": "^9.2.1"
+    "yarn-audit-fix": "^9.2.4"
   }
 }
